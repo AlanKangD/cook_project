@@ -36,7 +36,7 @@ nav ul li a:hover {
     <ul>
 <li><a href="${contextPath }/index">HOME</a></li>
 <li><a href="${contextPath }/member/memberInfo">회원 정보</a></li>
-<li><a href="login">로그인</a></li>
+
 
     </ul>
 </nav>
