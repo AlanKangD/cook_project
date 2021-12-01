@@ -29,7 +29,7 @@ public class MemberController {
 	@PostMapping("register")
 	public String register(MemberDTO dto) {
 		ms.register(dto);
-		return "member/login";
+		return "/default/main";
 	}
 	
 	@PostMapping("login")

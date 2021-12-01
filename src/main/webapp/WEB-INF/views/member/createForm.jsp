@@ -7,18 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
-createForm  이다 
+<c:import url="../default/header.jsp"/>
 	<form id="fo" action="register" method="post">
-						<div class="mainSec-a">								
+						<div align=center>								
 							<input type="text"  name="id" placeholder="input id"><br>
 							<input type="password" name="password" placeholder="input password"><br>			
 							<input type="text" name="email" placeholder="input email"><br>			
 							<input type="text" name="address" placeholder="(optional) address"><br>								
-							<br><br>	
-						</div>				
-						<div><button class="button" >회원가입</button></div><br>					
+							<br><br>										
+							<button class="button" >회원가입</button>
+					</div>					
 					</form>	
+					
+<c:import url="../default/footer.jsp"/>
 </body>
 </html>

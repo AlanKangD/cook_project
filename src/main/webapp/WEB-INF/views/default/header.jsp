@@ -25,7 +25,7 @@ nav ul li a:hover {
     text-align: center; margin-top: 0px; padding-bottom: 20px;
     color:burlywood; font-family:Gabriola;
 }
-.content{ margin-top: 50px; }
+.content{ margin-top: 50px; display:flex; padding-left: 35%;}
 </style> </head> <body>
 <div class="wrap">
     <div class="header"> <h1 class="title">CARE LAB</h1> </div>
@@ -34,7 +34,7 @@ nav ul li a:hover {
 <div class="wrap">
 <nav>
     <ul>
-<li><a href="index">HOME</a></li>
+<li><a href="${contextPath }/index">HOME</a></li>
 <li><a href="${contextPath }/member/memberInfo">회원 정보</a></li>
 <li><a href="login">로그인</a></li>
 
