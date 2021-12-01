@@ -14,7 +14,7 @@ createForm  이다
 						<div class="mainSec-a">								
 							<input type="text"  name="id" placeholder="input id"><br>
 							<input type="password" name="password" placeholder="input password"><br>			
-							<input type="email" name="email" placeholder="input email"><br>			
+							<input type="text" name="email" placeholder="input email"><br>			
 							<input type="text" name="address" placeholder="(optional) address"><br>								
 							<br><br>	
 						</div>				

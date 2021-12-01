@@ -35,5 +35,10 @@ public class HomeController {
 		
 		return "member/login";
 	}
+	@RequestMapping("index")
+	public String index() {
+		
+		return "default/main";
+	}
 	
 }

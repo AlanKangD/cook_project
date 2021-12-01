@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.care.cook.member.dto.MemberDTO;
 import com.care.cook.member.service.MemberService;
+import org.springframework.ui.Model;
+
 
 @Controller
 @RequestMapping("member")
 public class MemberController {
-	
 	@Autowired MemberService ms;
+	
+	@GetMapping("memberInfo")
+	public String memberInfo(Model model) {
+		ms.memberAllList(model);
+		return "member/memberAllList";
+	}
 	
 	@GetMapping("registerForm")
 	public String registerForm() {return "/member/createForm";}
