@@ -23,6 +23,15 @@
 	
 	<context:component-scan base-package="com.care.cook" />
 	
+	<beans:bean id="li" class="com.care.cook.interceptor.LoginInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/memberInfo"/>
+			<beans:ref bean="li"/>
+		</interceptor>
+	</interceptors>
+
 	
 	
 </beans:beans>
