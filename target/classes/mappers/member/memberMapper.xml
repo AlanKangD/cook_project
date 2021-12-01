@@ -4,6 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.care.cook.mybatis.member.MemberMapper">
+	<resultMap id="member" type="com.care.cook.member.dto.MemberDTO" >
+		<id property="id" column="ID"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="sessionId" column="SESSION_ID"/>
+		<result property="autoLogin" column="AUTO_LOGIN"/>	
+	</resultMap>
+
+	
+	<insert id="register">
+		insert into cook_member(ID, PASSWORD, EMAIL, ADDRESS) 
+		values(#{id}, #{password}, #{email}, #{address})
+	</insert>
+	
+	<select id="loginChk" resultMap="member">
+		select ID, PASSWORD from cook_member where id= #{id}	
+	</select>
 
 
 </mapper>

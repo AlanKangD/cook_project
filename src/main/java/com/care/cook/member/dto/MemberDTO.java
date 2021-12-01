@@ -7,6 +7,8 @@ public class MemberDTO {
 	private String address;
 	private String session_id;
 	private String auto_login;
+	private String sessionId;
+	private String autoLogin; 
 	
 	public String getId() {
 		return id;
@@ -32,6 +34,7 @@ public class MemberDTO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public String getSession_id() {
 		return session_id;
 	}
@@ -44,8 +47,18 @@ public class MemberDTO {
 	public void setAuto_login(String auto_login) {
 		this.auto_login = auto_login;
 	}
-	
-	
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
+	public String getAutoLogin() {
+		return autoLogin;
+	}
+	public void setAutoLogin(String autoLogin) {
+		this.autoLogin = autoLogin;
+	}
 	
 
 }
