@@ -24,7 +24,10 @@ public class MemberController {
 	}
 	
 	@GetMapping("registerForm")
-	public String registerForm() {return "/member/createForm";}
+	public String registerForm() {
+		
+		return "/member/createForm";
+	}
 	
 	@PostMapping("register")
 	public String register(MemberDTO dto) {

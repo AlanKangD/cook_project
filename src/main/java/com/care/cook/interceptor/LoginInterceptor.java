@@ -11,6 +11,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		System.out.println("로그인 인터셉터 동작 확인 ");
+		
+		
+		
+		
 		return true;
 	}
 
