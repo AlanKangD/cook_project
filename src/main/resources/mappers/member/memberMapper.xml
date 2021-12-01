@@ -4,6 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.care.cook.mybatis.member.MemberMapper">
-
-
+	<resultMap type="com.care.cook.member.dto.MemberDTO" id="member">
+		<id property="id" column="id"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="address" column="address"/>
+		<result property="sessionId" column="session_id"/>
+		<result property="autoLogin" column="auto_login"/>
+	</resultMap>
+	
+	<select id="memberAllList" resultMap="member">
+		select * from cook_member
+	</select>
+	
 </mapper>

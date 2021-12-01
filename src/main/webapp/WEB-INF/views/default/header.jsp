@@ -34,7 +34,7 @@ nav ul li a:hover {
 <nav>
     <ul>
 <li><a href="index">HOME</a></li>
-<li><a href="memberInfo">회원 정보</a></li>
+<li><a href="member/memberInfo">회원 정보</a></li>
 <li><a href="login">로그인</a></li>
 
     </ul>
