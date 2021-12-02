@@ -152,6 +152,15 @@
 <artifactId>spring-security-web</artifactId>
 <version>${org.springframework-version}</version>
 </dependency>
+
+<!-- JSON.stringify(문자열 json타입 변경)
+		자바스크립트의 {키 : 벨류} 형태를 json형태의 키벨류 형태로 바꿔준다   -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.5</version>
+		</dependency>
+
 	</dependencies>
     <build>
         <plugins>

@@ -17,7 +17,10 @@
 		</tr>
 		<c:forEach var="memberList" items="${memberAllList }">
 			<tr>
-				<td>${memberList.id }</td> <td>${memberList.password }</td> <td>${memberList.email }</td> <td>${memberList.address }</td>
+				<td><a href="${contextPath }/member/contentView?id=${memberList.id }">${memberList.id }</a></td> 
+				<td>${memberList.password }</td> 
+				<td>${memberList.email }</td> 
+				<td>${memberList.address }</td>
 			</tr>
 		</c:forEach>
 	</table>
