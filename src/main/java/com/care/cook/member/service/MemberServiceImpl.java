@@ -47,8 +47,8 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		if(dto == null) {
 			System.out.println("없는 아이디 ");
-//		} else if(encoder.matches(password, dto.getPassword())) {   //암호화 되어있는 비밀번호 확인 시 
-		} else if(password.equals(dto.getPassword())) {
+		} else if(encoder.matches(password, dto.getPassword())) {   //암호화 되어있는 비밀번호 확인 시 
+		//} else if(password.equals(dto.getPassword())) {
 			System.out.println("로그인 성공");
 			result = 1;
 		} else {
@@ -73,6 +73,9 @@ public class MemberServiceImpl implements MemberService {
 	public void modifyMem(MemberDTO dto, HttpServletResponse response) {		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = null;
+		String securePw = encoder.encode(dto.getPassword());
+		dto.setPassword(securePw);
+		
 		try {
 			out = response.getWriter();
 		} catch (IOException e) {

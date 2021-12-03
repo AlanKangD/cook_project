@@ -69,7 +69,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("modifyMem")
-	public void modifyMem(MemberDTO dto, HttpServletResponse response) {
+	public void modifyMem(MemberDTO dto, HttpServletResponse response) {		
 		ms.modifyMem(dto, response);
 	}
 	@GetMapping("deleteMem")
