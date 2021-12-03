@@ -41,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
-	@Override
+	@Override //member 최종 수정 여기까지하면 끝 관리자 기능만들기!! session user, admin;
 	public int loginChk(String id, String password) {
 		MemberDTO dto = mapper.loginChk(id);
 		int result = 0;

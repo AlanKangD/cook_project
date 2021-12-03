@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.care.cook.common.session.SessionName;
 import com.care.cook.member.dto.MemberDTO;
 import com.care.cook.member.service.MemberService;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("member")
-public class MemberController {
+public class MemberController implements SessionName{
 	@Autowired MemberService ms;
 	
 	@GetMapping("memberInfo")
@@ -49,7 +50,7 @@ public class MemberController {
 	public String login(@RequestBody MemberDTO dto, HttpSession session) {		
 		int result = ms.loginChk(dto.getId(), dto.getPassword());
 		if(result == 1) {	
-			session.setAttribute("loginUser", dto.getId());		
+			session.setAttribute(USERSESSION, dto.getId());		
 			 String id = dto.getId();
 			return "{\"result\":\""+id+"\"}"; // {result : "id"}  result키 : 벨류
 		}		
