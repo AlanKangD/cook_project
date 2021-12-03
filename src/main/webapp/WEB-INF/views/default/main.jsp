@@ -48,8 +48,11 @@
 					alert("아이디와 비밀번호를 다시 확인해 주세요")
 				} else {
 					$("#divHide").hide();
-					$("#success").text(data.result + '님, 환영합니다!'); 
-					
+					let html = ""
+					html += data.result + "님, 환영합니다!<br>";
+					html += "<a href='${contextPath }/member/logout'>로그아웃</a>";
+			
+					$("#success").html(html)
 					//로그아웃 
 				}
 			},
@@ -81,12 +84,11 @@
 		</div>
 		<div class="b">
 			<span id="success">
-			</span>
 				<c:if test="${loginUser != null }">
 	 						${loginUser }님, 환영합니다! 			<br>
 					<a href="${contextPath }/member/logout">로그아웃</a>
 				</c:if>
-
+			</span>
 			<c:if test="${loginUser == null }">
 				<div id="divHide">
 					<input type="text" name="id" id="id" placeholder="아이디"><br>
