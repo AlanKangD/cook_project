@@ -44,19 +44,23 @@ public class MemberServiceImpl implements MemberService {
 	@Override //member 최종 수정 여기까지하면 끝 관리자 기능만들기!! session user, admin;
 	public int loginChk(String id, String password) {
 		MemberDTO dto = mapper.loginChk(id);
-		int result = 0;
-		if(dto == null) {
-			System.out.println("없는 아이디 ");
-		} else if(encoder.matches(password, dto.getPassword())) {   //암호화 되어있는 비밀번호 확인 시 
-		//} else if(password.equals(dto.getPassword())) {
-			System.out.println("로그인 성공");
-			result = 1;
+		int result = 0;		
+		System.out.println("입력한 아이디 : " + id );
+		if( dto!= null) {	
+			if(id.equals("admin") && encoder.matches(password, dto.getPassword()) ) {  //암호화 되어있는 비밀번호 확인 시 
+				result = 1;  //  관리자의 경우 1 리턴. 
+			}else if(!id.equals("admin") && encoder.matches(password, dto.getPassword()) ) {
+				result = 2;  // 멤버의 경우 2 리턴 
+			} else {
+				System.out.println("비밀번호 틀림");
+			}
 		} else {
-			System.out.println("비번 틀림");
+			System.out.println("없는 아이디!");
 		}
 		return result;
 	}
 		
+
 	@Override
 	public void memberAllList(Model model) {
 		

@@ -1,24 +1,21 @@
 package com.care.cook.member.Controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.care.cook.common.session.SessionName;
 import com.care.cook.member.dto.MemberDTO;
 import com.care.cook.member.service.MemberService;
-import org.springframework.ui.Model;
 
 
 @Controller
@@ -49,17 +46,21 @@ public class MemberController implements SessionName{
 //	public String login(@RequestBody String id, @RequestBody String password) {
 	public String login(@RequestBody MemberDTO dto, HttpSession session) {		
 		int result = ms.loginChk(dto.getId(), dto.getPassword());
-		if(result == 1) {	
-			session.setAttribute(USERSESSION, dto.getId());		
+		System.out.println("result : " + result);
+		if(result == 1) {	 // 관리자 
+			session.setAttribute(SessionName.ADMINSESSION, dto.getId());		
 			 String id = dto.getId();
 			return "{\"result\":\""+id+"\"}"; // {result : "id"}  result키 : 벨류
-		}		
+		} else if(result == 2) {
+			session.setAttribute(SessionName.USERSESSION, dto.getId());
+			return "{\"result\":\""+dto.getId()+"\"}";
+		}
 		return "{\"result\":false}";  // { result : false } 
 	}
 	
 	@GetMapping("logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("loginUser");
+		session.invalidate();
 		return "redirect: /cook/index";
 	}
 	
@@ -78,6 +79,8 @@ public class MemberController implements SessionName{
 		ms.deleteMem(id);
 		return "redirect:/member/memberInfo";
 	}
+	
+
 	
 	
 }

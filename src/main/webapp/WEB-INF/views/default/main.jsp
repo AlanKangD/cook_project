@@ -47,13 +47,17 @@
 				if (data.result == false) {
 					alert("아이디와 비밀번호를 다시 확인해 주세요")
 				} else {
-					$("#divHide").hide();
-					let html = ""
-					html += data.result + "님, 환영합니다!<br>";
-					html += "<a href='${contextPath }/member/logout'>로그아웃</a>";
-			
-					$("#success").html(html)
-					//로그아웃 
+				   $("#divHide").hide();
+	               let html = ""
+	                   if(data.result == "admin"){
+	                      html += "관리자 계정으로 로그인하셨습니다<br>";
+	                   }else{
+	                      html += data.result + "님, 환영합니다!<br>";
+	                   }
+	                   html += "<a href='${contextPath }/member/logout'>로그아웃</a>";
+	             
+	                   $("#success").html(html)
+	                   //로그아웃
 				}
 			},
 			error : function() {
@@ -83,13 +87,35 @@
 			</table>
 		</div>
 		<div class="b">
-			<span id="success">
-				<c:if test="${loginUser != null }">
-	 						${loginUser }님, 환영합니다! 			<br>
+			<span id="success"></span>
+			<c:choose>
+				<c:when test="${loginUser != null }">
+					${loginUser }님, 환영합니다!
+					<a href="${contextPath }/member/logout">로그아웃</a>
+				</c:when>
+				<c:when test="${loginAdmin != null }">
+						관리자님 어서오세요!
+					<a href="${contextPath }/member/logout">로그아웃</a>				
+				</c:when>				
+				<c:otherwise>
+					<div id="divHide">
+					<input type="text" name="id" id="id" placeholder="아이디"><br>
+					<input type="password" name="password" id="password"
+						placeholder="비밀번호">
+					<button onclick="ajax1()">로그인</button>
+					<br>
+					<%-- 		<input type="checkbox" name="autoLogin">로그인 유지 --%>
+					<a href="${contextPath }/member/registerForm">회원가입</a>
+				</div>
+				</c:otherwise>				
+			</c:choose>
+<!--  	
+				<c:if test="${loginUser != null || loginAdmin != null }">
+	 						${loginUser || loginAdmin }님, 환영합니다! 			<br>
 					<a href="${contextPath }/member/logout">로그아웃</a>
 				</c:if>
 			</span>
-			<c:if test="${loginUser == null }">
+			<c:if test="${loginUser == null && loginAdmin == null }">
 				<div id="divHide">
 					<input type="text" name="id" id="id" placeholder="아이디"><br>
 					<input type="password" name="password" id="password"
@@ -100,6 +126,7 @@
 					<a href="${contextPath }/member/registerForm">회원가입</a>
 				</div>
 			</c:if>
+-->		
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />
