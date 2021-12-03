@@ -37,12 +37,17 @@
 
 	<beans:bean id="li"
 		class="com.care.cook.common.interceptor.LoginInterceptor" />
-
+<beans:bean id="mi" class="com.care.cook.common.interceptor.MemberListInterceptor"/>	
 
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/memberInfo" />
 			<beans:ref bean="li" />
+			
+		</interceptor>
+		<interceptor>
+			<mapping path="/member/memberInfo"/>
+			<beans:ref bean="mi"/>
 		</interceptor>
 	</interceptors>
 
