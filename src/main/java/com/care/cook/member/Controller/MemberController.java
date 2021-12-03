@@ -39,7 +39,7 @@ public class MemberController implements SessionName{
 	public String register(MemberDTO dto) {
 		ms.register(dto);
 		return "/default/main";
-	}
+	}  
 	
 	@PostMapping(value="login", produces = "application/json; charset=utf-8")
 	@ResponseBody
