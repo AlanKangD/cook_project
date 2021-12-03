@@ -35,7 +35,10 @@ nav ul li a:hover {
 <nav>
     <ul>
 <li><a href="${contextPath }/index">HOME</a></li>
-<li><a href="${contextPath }/member/memberInfo">회원 정보</a></li>
+
+<c:if test="${loginAdmin != null}">
+	 <li><a href="${contextPath }/member/memberInfo">회원 정보</a></li>
+</c:if>
 
 
     </ul>
